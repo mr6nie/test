@@ -18,7 +18,8 @@
         <div class="card-body">
           <h6 class="card-title mb-3">ADD:</h6>
           <form method="post">
-            {% csrf_token %} {{ form.as_p }}
+            <span class="placeholder col-7">format: YYYY-MM-DD</span>
+            {% csrf_token %} {{form.as_p}}
             <button
               class="btn btn-primary btn-block confirm-button"
               type="submit"

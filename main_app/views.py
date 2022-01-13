@@ -1,5 +1,6 @@
+from distutils.log import error
 from django.shortcuts import render
-from rest_framework import generics
+from rest_framework import generics, filters
 from .serializers import NewsSerializer
 from .forms import NewsForm
 from .models import News
@@ -7,7 +8,11 @@ from .models import News
 
 class NewsListAPIview(generics.ListAPIView):
     serializer_class = NewsSerializer
-    queryset = News.objects.all().order_by("-id")
+    queryset = News.objects.all().order_by("-date")
+    filter_backends = [
+        filters.OrderingFilter,
+    ]
+    ordering_fields = ["date"]
 
 
 def newsCreate(request):

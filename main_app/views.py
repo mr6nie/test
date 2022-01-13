@@ -1,6 +1,13 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from rest_framework import generics
+from .serializers import NewsSerializer
 from .forms import NewsForm
+from .models import News
+
+
+class NewsListAPIview(generics.ListAPIView):
+    serializer_class = NewsSerializer
+    queryset = News.objects.all().order_by("-id")
 
 
 def newsCreate(request):

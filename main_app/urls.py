@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
-from .views import home
+from .views import newsCreate
 
 urlpatterns = [
-    path("", home),
+    path("", newsCreate, name="Create News"),
 ]
